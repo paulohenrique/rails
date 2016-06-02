@@ -1,0 +1,30 @@
+<%- model_class = Contato -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+
+  <dt><strong>Imagem</strong><dt>
+  <br>
+
+  <dd><%= image_tag @contato.avatar.url(:medium) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
+  <dd><%= @contato.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
+  <dd><%= @contato.telefone %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @contato.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:obs) %>:</strong></dt>
+  <dd><%= @contato.obs %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              contatos_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_contato_path(@contato), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              contato_path(@contato),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
